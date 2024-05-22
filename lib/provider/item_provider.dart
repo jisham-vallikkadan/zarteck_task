@@ -1,11 +1,7 @@
 import 'dart:convert';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zartek_machine_test/service/item_service.dart';
-
 import '../models/item_model.dart';
-import '../service/auth_service.dart';
 
 class ItemProvider with ChangeNotifier {
   bool isLoading = false;
@@ -23,7 +19,6 @@ class ItemProvider with ChangeNotifier {
     notifyListeners();
   }
 
-
   cartCount() {
     var newlist = itemList?.first.tableMenuList
         ?.map((element) => element.categoryDishes
@@ -35,8 +30,6 @@ class ItemProvider with ChangeNotifier {
   }
 
   addTocart({String? id, String? menuCatId}) async {
-    print(id);
-    print(menuCatId);
     var newlist = itemList?.first.tableMenuList
         ?.firstWhere((element) => element.menuCategoryId == menuCatId);
     CategoryDishes? selectedDish =
@@ -50,14 +43,11 @@ class ItemProvider with ChangeNotifier {
   }
 
   homeItemCountPlus({String? id, String? menuCatId}) {
-    print(id);
-    print(menuCatId);
     CategoryDishes? selectedDish;
     var newlist = itemList?.first.tableMenuList
         ?.firstWhere((element) => element.menuCategoryId == menuCatId);
     selectedDish =
         newlist?.categoryDishes?.firstWhere((element) => element.dishId == id);
-    print(jsonEncode(selectedDish?.count));
     selectedDish?.count = (selectedDish.count ?? 0) + 1;
     var price = (selectedDish?.dishPrice ?? 0) * (selectedDish?.count ?? 0);
     selectedDish?.prize = price as double?;
@@ -65,8 +55,6 @@ class ItemProvider with ChangeNotifier {
   }
 
   homeItemCountMinus({String? id, String? menuCatId}) {
-    print(id);
-    print(menuCatId);
     CategoryDishes? selectedDish;
     var newlist = itemList?.first.tableMenuList
         ?.firstWhere((element) => element.menuCategoryId == menuCatId);
@@ -93,13 +81,11 @@ class ItemProvider with ChangeNotifier {
   }
 
   String totalNumberOfItems(List<int?> count) {
-    print(count);
     int total = 0;
     for (int i = 0; i < count.length; i++) {
       total = total + count[i]!;
     }
     print(total);
-    // notifyListeners();
     return total.toString();
   }
 
