@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zartek_machine_test/presentation/screens/authentication_screen.dart';
+import 'package:zartek_machine_test/presentation/screens/authentication_screen/authentication_screen.dart';
 import 'package:zartek_machine_test/presentation/screens/home/home_screen.dart';
 
 class AuthWrapper extends StatelessWidget {
@@ -22,11 +22,12 @@ class AuthWrapper extends StatelessWidget {
           if (snapshot.data == null) {
             return Authentication();
           } else {
-            print('------------------${snapshot.data?.uid}---------------${snapshot.data?.displayName}');
+            print(
+                '------------------${snapshot.data?.uid}---------------${snapshot.data?.displayName}-------${snapshot.data?.phoneNumber}-----${snapshot.data}');
             return const HomeScreen();
           }
         }
-        return CircularProgressIndicator();
+        return const CircularProgressIndicator();
       },
     );
   }

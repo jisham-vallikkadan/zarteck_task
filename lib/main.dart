@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:zartek_machine_test/presentation/screens/authentication_screen.dart';
+import 'package:zartek_machine_test/presentation/screens/authentication_screen/authentication_screen.dart';
 import 'package:zartek_machine_test/presentation/screens/home/home_screen.dart';
 import 'package:zartek_machine_test/presentation/wrapper.dart';
 import 'package:zartek_machine_test/provider/auth_provider.dart';

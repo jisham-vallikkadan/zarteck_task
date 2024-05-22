@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:zartek_machine_test/presentation/screens/authentication_screen.dart';
+import 'package:zartek_machine_test/presentation/screens/authentication_screen/authentication_screen.dart';
 
 import '../../../../service/auth_service.dart';
 
@@ -17,6 +17,7 @@ class AppDrawer extends StatelessWidget {
           padding: const EdgeInsets.all(0),
           children: [
             Container(
+              padding: const EdgeInsets.all(16),
               alignment: Alignment.center,
               height: 200.h,
               decoration: const BoxDecoration(
@@ -32,13 +33,26 @@ class AppDrawer extends StatelessWidget {
                     backgroundImage:
                         NetworkImage(snapshot.data?.photoURL ?? ''), //Text
                   ),
-                  Text(
-                    "${snapshot.data?.displayName}",
-                    style: TextStyle(fontSize: 18.sp, color: Colors.black),
-                  ),
+                  snapshot.data?.displayName != ""
+                      ? Text(
+                          snapshot.data?.displayName??"",
+                          style:
+                              TextStyle(fontSize: 18.sp, color: Colors.black),
+                        )
+                      : const SizedBox.shrink(),
+                  snapshot.data?.phoneNumber != null
+                      ? Text(
+                          snapshot.data?.phoneNumber ?? '',
+                          style:
+                              TextStyle(fontSize: 18.sp, color: Colors.black),
+                        )
+                      : const SizedBox(
+                          height: 1,
+                        ),
                   Text(
                     "ID :${snapshot.data?.uid}",
-                    style: TextStyle(fontSize: 18.sp, color: Colors.black),
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 20.sp, color: Colors.black),
                   ),
                 ],
               ),

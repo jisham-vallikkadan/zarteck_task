@@ -7,8 +7,9 @@ import 'package:zartek_machine_test/presentation/screens/home/home_screen.dart';
 import 'package:zartek_machine_test/provider/item_provider.dart';
 import 'package:zartek_machine_test/service/auth_service.dart';
 
-import '../../custom_widgets/custom_button.dart';
-import '../../provider/auth_provider.dart';
+import '../../../custom_widgets/custom_button.dart';
+import '../../../provider/auth_provider.dart';
+import 'enter_phone_number.dart';
 
 class Authentication extends StatelessWidget {
   Authentication({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class Authentication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SizedBox(
         width: ScreenUtil().screenWidth,
         height: ScreenUtil().screenHeight,
@@ -36,7 +38,7 @@ class Authentication extends StatelessWidget {
                   children: [
                     CustomButton(
                       isLoading: sign.isGoogelLoading,
-                      text: 'Goggel',
+                      text: 'Googel',
                       onPress: () async {
                         UserCredential? user =
                             await sign.signWithGoogel(context: context);
@@ -62,7 +64,13 @@ class Authentication extends StatelessWidget {
                     CustomButton(
                       bgColor: Colors.green,
                       text: 'Phone',
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EnterPhoneNumber(),
+                            ));
+                      },
                       leftIcon: const Icon(
                         Icons.phone,
                         color: Colors.white,

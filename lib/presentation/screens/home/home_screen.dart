@@ -28,10 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Consumer<ItemProvider>(builder: (context, item, _) {
       return Scaffold(
-        drawer:  Drawer(
+        backgroundColor: Colors.white,
+        drawer: Drawer(
           child: AppDrawer(),
         ),
         appBar: AppBar(
+          backgroundColor: Colors.white,
           actions: [
             Consumer<ItemProvider>(builder: (context, cart, _) {
               return Stack(
@@ -123,10 +125,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Icon(
-                                        Icons.circle,
-                                        color: Colors.green,
-                                        size: 12.r,
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: Icon(
+                                          Icons.circle,
+                                          color: index1 % 2 == 0
+                                              ? Colors.green
+                                              : Colors.red,
+                                          size: 12.r,
+                                        ),
                                       ),
                                       const SizedBox(
                                         width: 5,
@@ -323,7 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             (items?.addonCat?.length ?? 0) > 0
                                                 ? Text(
-                                                    "Customizations availabl ",
+                                                    "Customizations availabl",
                                                     style: TextStyle(
                                                         color: Colors.red,
                                                         fontSize: 14.sp,
