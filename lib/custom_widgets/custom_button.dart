@@ -9,9 +9,11 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final Size? size;
   final Widget? leftIcon;
+  final bool isLoading;
 
   const CustomButton(
       {this.onPress,
+      this.isLoading = false,
       required this.text,
       super.key,
       this.bgColor,
@@ -31,23 +33,28 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50.r),
         ),
       ),
-      onPressed: onPress,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          leftIcon ?? const SizedBox(),
-          Text(text,
-              style: textStyle ??
-                  TextStyle(
-                    color: textColor ?? Colors.white,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                  )),
-          SizedBox(
-            width: 10,
-          ),
-        ],
-      ),
+      onPressed: isLoading ? null : onPress,
+      child: isLoading
+          ? const SizedBox(
+              height: 48,
+              child:
+                  Center(child: CircularProgressIndicator(color: Colors.grey)))
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                leftIcon ?? const SizedBox(),
+                Text(text,
+                    style: textStyle ??
+                        TextStyle(
+                          color: textColor ?? Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                        )),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
     );
   }
 }

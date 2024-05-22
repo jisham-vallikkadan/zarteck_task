@@ -4,11 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:zartek_machine_test/presentation/screens/authentication_screen.dart';
 import 'package:zartek_machine_test/presentation/screens/home/home_screen.dart';
+import 'package:zartek_machine_test/presentation/wrapper.dart';
+import 'package:zartek_machine_test/provider/auth_provider.dart';
 import 'package:zartek_machine_test/provider/item_provider.dart';
 
 import 'firebase_options.dart';
 
-Future main()async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
             providers: [
               ChangeNotifierProvider<ItemProvider>(
                   create: (_) => ItemProvider()),
+              ChangeNotifierProvider<SignInProvider>(
+                  create: (_) => SignInProvider()),
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
               ),
-              home: const Authentication(),
+              home: AuthWrapper(),
             )));
   }
 }

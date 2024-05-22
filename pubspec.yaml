@@ -32,8 +32,9 @@ dependencies:
     sdk: flutter
   provider:
   flutter_screenutil:
-  cloud_firestore: ^4.17.3
-  firebase_core: ^2.31.0
+  firebase_core:
+  firebase_auth:
+  google_sign_in:
   http:
   fluttertoast:
   shared_preferences: ^2.0.15

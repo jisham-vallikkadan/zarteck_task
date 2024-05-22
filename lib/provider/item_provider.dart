@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zartek_machine_test/service/item_service.dart';
 
 import '../models/item_model.dart';
+import '../service/auth_service.dart';
 
 class ItemProvider with ChangeNotifier {
   bool isLoading = false;
@@ -20,6 +22,7 @@ class ItemProvider with ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
 
   cartCount() {
     var newlist = itemList?.first.tableMenuList

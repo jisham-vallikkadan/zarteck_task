@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Consumer<ItemProvider>(builder: (context, item, _) {
       return Scaffold(
-        drawer: const Drawer(
+        drawer:  Drawer(
           child: AppDrawer(),
         ),
         appBar: AppBar(
@@ -205,10 +205,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   children: [
                                                     Expanded(
                                                       child: InkWell(
-                                                        hoverColor: Colors.transparent,
-                                                        splashColor: Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        splashColor:
+                                                            Colors.transparent,
                                                         highlightColor:
-                                                        Colors.transparent,
+                                                            Colors.transparent,
                                                         onTap: () {
                                                           item.homeItemCountMinus(
                                                               id: items?.dishId,
@@ -238,8 +240,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         child: Text(
                                                           '${items?.count ?? 0}',
                                                           style: TextStyle(
-                                                              color: Colors
-                                                                  .white,
+                                                              color:
+                                                                  Colors.white,
                                                               fontSize: 16.sp,
                                                               fontWeight:
                                                                   FontWeight
@@ -249,10 +251,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                     Expanded(
                                                       child: InkWell(
-                                                        hoverColor: Colors.transparent,
-                                                        splashColor: Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        splashColor:
+                                                            Colors.transparent,
                                                         highlightColor:
-                                                        Colors.transparent,
+                                                            Colors.transparent,
                                                         onTap: () {
                                                           item.homeItemCountPlus(
                                                               id: items?.dishId,
